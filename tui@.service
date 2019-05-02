@@ -1,0 +1,20 @@
+[Unit]
+Description=Text User Interface on TTY
+Conflicts=getty@%I.service
+Before=getty.target
+
+[Service]
+ExecStart=/usr/local/bin/tui.kexe
+StandardInput=tty
+StandardOutput=tty
+Restart=always
+RestartSec=1
+UtmpIdentifier=%I
+TTYPath=/dev/%I
+TTYReset=yes
+TTYVHangup=yes
+TTYVTDisallocate=yes
+SendSIGHUP=yes
+
+[Install]
+WantedBy=multi-user.target
